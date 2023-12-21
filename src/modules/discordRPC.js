@@ -34,11 +34,19 @@ class DiscordPresence {
   start() {
     this.client.on('ready', () => {
       this.client.setActivity(this.activity);
-      console.log('La présence enrichie est active !');
+      console.log('Up !');
     });
 
     this.client.login({ clientId: this.clientId }).catch(console.error);
   }
+
+    stop() {
+        this.client.destroy();
+    }
+
+    refresh() {
+        this.client.setActivity(this.activity);
+    }
 }
 
 module.exports = DiscordPresence;
